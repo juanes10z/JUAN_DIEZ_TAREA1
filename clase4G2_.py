@@ -35,12 +35,19 @@ class Sistema:
         cedula = int(input("Ingrese la cedula: "))    
         genero = input("Ingrese el genero: ")
         servicio = input("Ingrese el servicio: ")
+
+        for paciente in self.__lista_pacientes :
+            while cedula == paciente.verCedula():
+                print("El paciente ya se encuentra registrado.")
+                cedula = int(input("Por favor ingrese nuevamente otra cedula: "))
         # 2- creo el objeto Paciente y le asigno los datos
         p = Paciente()
         p.asignarNombre(nombre)
         p.asignarCedula(cedula)
         p.asignarGenero(genero)
-        p.asignarServicio(servicio)        
+        p.asignarServicio(servicio)  
+
+             
         # 3- guardo el Paciente en  la lista        
         self.__lista_pacientes.append(p)
         # self.__lista_pacientes[p.verCedula()] = p
@@ -62,18 +69,5 @@ class Sistema:
                 
 mi_sistema = Sistema()
 
-while True:
-    opcion = int(input("1. Nuevo paciente\n - 2. Numero de paciente\n - 3. Datos paciente\n - 4. Salir:  \n"))
-    if opcion == 1:
-        mi_sistema.ingresarPaciente()
-    elif opcion == 2:
-        print("Ahora hay: " + str(mi_sistema.verNumeroPacientes()))
-    elif opcion == 3:
-        mi_sistema.verDatosPaciente()
-    elif opcion == 4:
-        break
-    else:
-        print("Opcion invalida")
-    
 
 
