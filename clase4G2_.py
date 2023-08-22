@@ -32,7 +32,15 @@ class Sistema:
     def ingresarPaciente(self):
         # 1- solicito los datos por teclado
         nombre = input("Ingrese el nombre: ")
-        cedula = int(input("Ingrese la cedula: "))    
+        while True:
+            try:
+                cedula = int(input("Ingrese la cedula(debe de ser de 7 cifras): "))
+                while cedula > 9999999 or cedula < 999999:
+                    print("El valor excede los limites")
+                    cedula = int(input("Ingrese la cedula(debe de ser de 7 cifras): "))
+                break 
+            except:
+                print("El valor ingresado debe ser de tipo numerico y no exceder los limites")   
         genero = input("Ingrese el genero: ")
         servicio = input("Ingrese el servicio: ")
 
